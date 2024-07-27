@@ -1,26 +1,35 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <h3 class="teal-text text-darken-4 center-align">All Task</h3>
+<h3 class="teal-text text-darken-4 center-align">All Task</h3>
 
-    <ul class="collapsible">
-        {% for task in tasks %}
-        <li>
-            <div class="collapsible-header white-text cyan darken-3 text-shadow">
+<ul class="collapsible">
+    {% for task in tasks %}
+    <li>
+        <!-- Collapsible Header-->
+        <div class="collapsible-header white-text cyan darken-3 text-shadow">
+            <div class="col s3">
                 <i class="fa-solid fa-caret-down"></i>
+                <a href="" class="btn-small teal lighten-3">Done</a>
+                <a href="" class="btn-small cyan accent-3">Edit</a>
+            </div>
+            <div class="col s9">
                 <strong>{{ task.task_name }}</strong> : {{ task.due_date }}
                 {% if task.is_urgent == 'on' %}
-                    <i class="fa-solid fa-circle-exclamation cyan-text text-lighten-2 tooltipped"
-                    data-position="rigth" data-tooltip="URGENT!"></i>
+                <i class="fa-solid fa-circle-exclamation cyan-text text-lighten-2 tooltipped" data-position="rigth"
+                    data-tooltip="URGENT!"></i>
                 {% endif %}
             </div>
-            <div class="collapsible-body">
-                <strong>{{ task.category_name }}</strong>
-                <p> {{ task.task_description }}</p>
-                <p><em>by: {{ task.created_by  }}</em></p>
-            </div>
-        </li>
-        {% endfor %}
-    </ul>
+        </div>
+
+        <!-- Collapsible Body -->
+        <div class="collapsible-body">
+            <strong>{{ task.category_name }}</strong>
+            <p> {{ task.task_description }}</p>
+            <p><em>by: {{ task.created_by }}</em></p>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
 
 {% endblock %}
